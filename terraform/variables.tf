@@ -23,9 +23,3 @@ variable "zone_name" {
 variable "app_version"{
 
 }
-
-variable "instance_password" {
-  description = "SSH password for the ec2-user account used during golden-AMI provisioning. Supply via a gitignored terraform.tfvars or TF_VAR_instance_password — never commit a value here."
-  type        = string
-  sensitive   = true
-}
