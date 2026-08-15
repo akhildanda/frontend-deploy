@@ -23,7 +23,7 @@ module "frontend" {
    connection {
         type     = "ssh"
         user     = "ec2-user"
-        password = "DevOps321"
+        password = var.instance_password
         host     = module.frontend.private_ip
     }
 
@@ -37,7 +37,7 @@ module "frontend" {
             "chmod +x /tmp/${var.common_tags.Component}.sh",
             "sudo sh /tmp/${var.common_tags.Component}.sh ${var.common_tags.Component} ${var.environment} ${var.app_version}"
         ]
-    } 
+    }
 }
 
       resource "aws_ec2_instance_state" "frontend" {
@@ -60,7 +60,7 @@ module "frontend" {
 
      provisioner "local-exec" {
         command = "aws ec2 terminate-instances --instance-ids ${module.frontend.id}"
-    } 
+    }
 
      depends_on = [ aws_ami_from_instance.frontend ]
 }
