@@ -23,7 +23,7 @@ module "frontend" {
    connection {
         type     = "ssh"
         user     = "ec2-user"
-        password = var.instance_password
+        password = "DevOps321"
         host     = module.frontend.private_ip
     }
 
